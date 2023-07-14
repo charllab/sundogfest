@@ -1,0 +1,11 @@
+footer {
+    .navbar-nav .nav-link {
+        padding: $spacer/2 $spacer*.85;
+        color: white;
+    }
+    .menu-item.btn.btn-primary > a.nav-link {
+        padding: 0;
+        margin: 0;
+        color: white;
+    }
+}

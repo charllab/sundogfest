@@ -1,0 +1,17 @@
+button, .btn {
+    cursor: pointer;
+    padding: 12px 24px;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: $spacer;
+    @include media-breakpoint-up(lg) {
+        font-size: 16px;
+    }
+}
+.btn-primary {
+    color: white;
+}
+.btn-outline-primary {
+    background-color: white;
+}
