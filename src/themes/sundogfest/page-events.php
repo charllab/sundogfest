@@ -4,10 +4,18 @@
  * Template Name: Events
  *
  **/
-get_header(); ?>
+get_header();
 
-    <main>
+//cta data form theme options
+$footer_cta = get_field('footer_cta', 'options');
+$align = $footer_cta['buttons_set'];
+$footer_buttons = $footer_cta['buttons_set']['buttons'];
+
+?>
+
+    <main class="mt-2">
         <div class="container">
+            <?php if (is_post_type_archive('tribe_events')) : ?>
             <div class="row justify-content-center">
                 <div class="col">
                     <div class="text-center">
@@ -15,6 +23,7 @@ get_header(); ?>
                     </div>
                 </div><!-- col -->
             </div><!-- row -->
+            <?php endif;?>
             <div class="row justify-content-center">
                 <div class="col">
                     <div>
@@ -32,10 +41,17 @@ get_header(); ?>
                 <div class="row justify-content-center">
                     <div class="col-10 col-lg-6">
                         <div class="position-relative sundogs--left sundogs--right text-center px-1">
-                            <h1>Become A Volunteer</h1>
-                            <p>We are looking for people who are available to help with a variety of activities. Send us
-                                a note and share with us what skills you have to offer.</p>
-                            <a href="#" class="btn btn-primary">Get Involved</a>
+                            <?php echo $footer_cta['content'];?>
+                            <?php if ($footer_buttons):?>
+                                <div class="<?php echo esc_attr($align['alignment'])?>">
+                                    <?php foreach ($footer_buttons as $button):?>
+                                        <a href="<?php echo $button['link']['url']; ?>"
+                                           class="btn <?php echo esc_attr($button['style']);?>">
+                                            <?php echo $button['link']['title']; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

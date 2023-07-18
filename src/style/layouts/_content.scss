@@ -18,28 +18,16 @@
     padding: $spacer*2 0;
 }
 
-.bg-pink {
-    background-color: $pink;
-}
-
-.bg-orange {
-    background-color: $orange;
-}
-
-.bg-blue {
-    background-color: $blue;
-}
-
-.bg-yellow {
-    background-color: $yellow;
-}
-
 .block__tint-overlay {
     opacity: .28;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.block__tint-overlay--black {
+    background-color: $dark;
 }
 
 .block__tint-overlay--pink {
@@ -121,7 +109,7 @@ section {
     }
 }
 
-.background {
+.background-img-container {
     @include media-breakpoint-up(md) {
         position: relative;
         width: auto;
@@ -131,18 +119,18 @@ section {
         background-position: center right;
     }
 }
-.foreground {
+
+.foreground-img-container {
     @include media-breakpoint-up(md) {
-        position: relative;
+        position: absolute;
         width: 50%; /* this can be adjusted as needed */
         height: 100%;
         /* other styles as needed */
     }
 }
 
-.column__bg-img {
-    background-repeat: no-repeat;
-    background-size: cover;
+.image--right .foreground-img-container {
+    right: 0;
 }
 
 .column--min-height {
@@ -167,6 +155,13 @@ section {
         margin-bottom: 0;
     }
 }
+
+.event-image {
+    object-fit: contain;
+    width: 100%;
+    height: 300px;
+}
+
 .tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container,
 .tribe-events .tribe-events-l-container {
     min-height: auto;
@@ -180,13 +175,31 @@ section {
     color: $yellow !important;
 }
 
+ul.tribe-events-sub-nav {
+    padding-left: 0;
+}
+
 .tribe-events-single-event-title {
     font-family: $font-family-serif;
     font-weight: 500;
 }
+
 .tribe-events-content {
     .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
         font-family: $font-family-serif;
         font-weight: 500;
     }
 }
+
+.single-tribe_events .tribe-events-event-image {
+    display: none !important;
+}
+.tribe-events-schedule {
+    h2 {
+        text-decoration: none;
+    }
+}
+.tribe-events-single .tribe-events-sub-nav .tribe-events-nav-next a, .tribe-events-single .tribe-events-sub-nav .tribe-events-nav-previous a {
+    font-weight: 500;
+}
+

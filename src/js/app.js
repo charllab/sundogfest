@@ -1,5 +1,11 @@
 jQuery(function () {
 
+    $('ul li').each(function() {
+        if ($(this).css('text-align') == 'center') {
+            $(this).parent().css('list-style-position', 'inside');
+        }
+    });
+
     // Remove WP Block element iframe classes
     if (jQuery('.wp-block-embed-youtube').length) {
         jQuery('.wp-block-embed-youtube').removeClass().addClass('embed-responsive-item');

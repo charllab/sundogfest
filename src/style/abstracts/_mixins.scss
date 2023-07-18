@@ -6,8 +6,49 @@
     background: linear-gradient(to bottom, $top $topPos, $bottom $bottomPos);
 }
 
+.bg-pink {
+    background-color: $pink;
+}
+
+.bg-orange {
+    background-color: $orange;
+}
+
+.bg-blue {
+    background-color: $blue;
+}
+
+.bg-yellow {
+    background-color: $yellow;
+}
+
 // Example - @include gradX(transparent, 0%, rgba($black, .1), 100%);
 @mixin gradX($left, $leftPos, $right, $rightPos) {
     background: $left;
     background: linear-gradient(to right, $left $leftPos, $right $rightPos);
 }
+
+@mixin apply-text-decoration-color {
+    .bg-pink {
+        h1, .h1, h2, .h2 {
+            text-decoration-color: $blue;
+        }
+    }
+    .bg-orange {
+        h1, .h1, h2, .h2 {
+            text-decoration-color: $yellow;
+        }
+    }
+    .bg-blue {
+        h1, .h1, h2, .h2 {
+            text-decoration-color: $pink;
+        }
+    }
+    .bg-yellow {
+        h1, .h1, h2, .h2 {
+            text-decoration-color: $orange;
+        }
+    }
+}
+
+@include apply-text-decoration-color;

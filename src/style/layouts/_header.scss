@@ -16,11 +16,22 @@
     }
 
     .navbar-nav .nav-link {
-        font-weight: 500;
+        color: lighten($dark, 35%);
+        font-weight: 400;
+
+        &:hover {
+            color: lighten($dark, 5%);
+        }
     }
 
     .dropdown-toggle::after {
         margin-left: .45rem;
+    }
+
+    .active .nav-link, .active .nav-link:hover {
+        cursor: default;
+        color: $dark;
+        font-weight: 500;
     }
 
     @include media-breakpoint-up(lg) {
@@ -81,12 +92,14 @@
     width: 100%;
     z-index: 200;
 }
+
 .navbar, .navbar-placeholder {
     height: 80px;
     @include media-breakpoint-up(lg) {
         height: 100px;
     }
 }
+
 .navbar-placeholder {
     width: 100%;
 }
@@ -99,4 +112,28 @@
 
 .header__banner {
     min-height: 460px;
+    text-shadow: 0px 0px 16px rgba(#070909, 0.35);
+}
+
+li.contact-us {
+    a.nav-link {
+        @extend .btn;
+        @extend .btn-primary;
+        margin-top: $spacer/2;
+        margin-bottom: 0;
+        padding-left: $spacer*1.75;
+        padding-right: $spacer*1.75;
+        color: white !important;
+        font-weight: 500 !important;
+
+        &:hover {
+            color: black !important;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            margin-left: $spacer/2;
+        }
+    }
 }

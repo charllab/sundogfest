@@ -33,17 +33,17 @@
         <?php wp_nav_menu([
             'theme_location' => 'primary',
             'container_class' => 'container',
-            'container_id' => 'mainnav',
+            'container_id' => 'mainnav-mobile',
             'menu_class' => 'navbar-nav ml-auto',
             'fallback_cb' => '',
             'menu_id' => 'main-menu',
             'walker' => new understrap_WP_Bootstrap_Navwalker(),
         ]); ?>
 
-        <div class="container d-flex justify-content-center align-items-center my-1 my-lg-0 me-0 me-lg-50">
+        <div class="container d-flex justify-content-start align-items-center mb-150">
             <div class="social-links">
                 <?php while( have_rows('social_links', 'options') ): the_row(); ?>
-                    <a class="social-link btn btn-link text-secondary pt-50 px-250 pb-250 mb-0" style="margin-right: 4px" target="_blank" href="<?php the_sub_field('url'); ?>">
+                    <a class="social-link btn btn-link text-dark pt-250 px-250 pb-250 my-0" style="margin-right: 4px" target="_blank" href="<?php the_sub_field('url'); ?>">
                         <i class="<?php the_sub_field('icon_class'); ?>" style="font-size: 28px;">
                             <span class="sr-only"><?php the_sub_field('label'); ?></span>
                         </i>
@@ -53,17 +53,17 @@
         </div>
     </div>
 
-    <section class="header__banner d-flex justify-content-center align-items-center position-relative">
-        <div class="block__tint-overlay block__tint-overlay--pink position-absolute h-100 z-index-1"></div>
+    <?php $header = get_field('header'); ?>
+    <?php if($header) : ?>
+    <section class="header__banner d-flex justify-content-center align-items-center position-relative" style="background-image: url(<?php echo esc_attr($header['banner_image']['url']);?>);background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="block__tint-overlay <?php echo esc_attr($header['overlay']);?> position-absolute h-100 z-index-1"></div>
         <div class="container position-relative z-index-10">
             <div class="row justify-content-center text-center">
-                <div class="col text-white">
-                    <h1 class="text-decoration-none">An immersive experience for all ages that elevates and celebrates Arts and Culture in Greater Vernon.</h1>
-                    <p class="lead">
-                        Option lead text
-                    </p>
+                <div class="col col-xwide-11 text-white text-decoration-none pt-2">
+                    <?php echo $header['content'];?>
                 </div>
             </div>
         </div>
     </section>
+    <?php endif; ?>
 </header>
