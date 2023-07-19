@@ -16,7 +16,7 @@
                         'posts_per_page' => 3,
                         'meta_key' => '_EventStartDate',
                         'orderby' => '_EventStartDate',
-                        'order' => 'DESC',
+                        'order' => 'ASC',
                         'eventDisplay' => 'list',
                     );
 
