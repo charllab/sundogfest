@@ -155,7 +155,7 @@ $footer_buttons = $footer_cta['buttons_set']['buttons'];
         </div><!-- row -->
         <div class="row text-white justify-content-center">
             <div class="col-lg-6 text-center">
-                <p class="small">&copy; <?php echo Date('Y') . ' ' . get_bloginfo('name'); ?> | Designed, Developed
+                <p class="small">&copy; <?php echo Date('Y') . ' ' . get_bloginfo('name'); ?> | <a href="<?php echo esc_url(home_url('/terms-of-use-and-privacy-policy')); ?>" class="text-white text-decoration-none">T&C's</a> | Designed, Developed
                     and Hosted by <a href="https://sproing.ca" target="_blank">Sproing&nbsp;Creative</a>
                 </p>
             </div>
