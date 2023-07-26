@@ -11,7 +11,7 @@
     }
 
     .nav-logo img {
-        width: 270px;
+        width: 340px;
         height: auto;
     }
 
@@ -96,7 +96,7 @@
 .navbar, .navbar-placeholder {
     height: 80px;
     @include media-breakpoint-up(lg) {
-        height: 100px;
+        height: 140px;
     }
 }
 
