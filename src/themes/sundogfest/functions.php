@@ -70,3 +70,8 @@ if (function_exists('acf_add_options_page')) {
         'redirect' => false
     ]);
 }
+
+//move Yoast down
+add_filter( 'wpseo_metabox_prio', function() {
+    return 'low';
+});
