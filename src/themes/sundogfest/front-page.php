@@ -11,8 +11,9 @@
             </div>
             <div class="row justify-content-center">
                 <?php
-                // Query for featured events first
-                $args_featured = array(
+                $current_date = date('Y-m-d H:i:s');
+
+                $args = array(
                     'post_type' => 'tribe_events',
                     'posts_per_page' => 3,
                     'meta_key' => '_EventStartDate',
@@ -21,43 +22,20 @@
                     'eventDisplay' => 'list',
                     'meta_query' => array(
                         array(
-                            'key' => '_tribe_featured',
-                            'value' => '1'
+                            'key' => '_EventStartDate',
+                            'value' => $current_date,
+                            'compare' => '>=',
+                            'type' => 'DATETIME'
                         )
                     )
                 );
 
-                $events_query_featured = new WP_Query($args_featured);
-                $featured_count = $events_query_featured->post_count;
+                $events_query = new WP_Query($args);
 
-                // If less than 3 featured events, get the remaining as non-featured
-                $remaining_count = 3 - $featured_count;
+                if ($events_query->have_posts()) {
+                    while ($events_query->have_posts()) {
+                        $events_query->the_post();
 
-                $args_non_featured = array(
-                    'post_type' => 'tribe_events',
-                    'posts_per_page' => $remaining_count,
-                    'meta_key' => '_EventStartDate',
-                    'orderby' => '_EventStartDate',
-                    'order' => 'ASC',
-                    'eventDisplay' => 'list',
-                    'meta_query' => array(
-                        array(
-                            'key' => '_tribe_featured',
-                            'value' => '0'
-                        )
-                    )
-                );
-
-                $events_query_non_featured = new WP_Query($args_non_featured);
-
-                // Combine both queries
-                $all_events = array_merge($events_query_featured->posts, $events_query_non_featured->posts);
-
-                if (!empty($all_events)) {
-                    foreach ($all_events as $post) {
-                        setup_postdata($post);
-
-                        // Your existing display code here
                         $event_link = get_permalink();
                         echo '<div class="col-md-4 col-xwide-3">';
                         echo '<div class="text-center">';
@@ -72,7 +50,7 @@
                         $end_date = get_post_meta(get_the_ID(), '_EventEndDate', true);
 
                         echo $thumbnail;
-                        echo '</a>';  // Fixed the closing anchor tag
+                        echo '</a>';
                         echo '<p>';
                         echo '<b>' . get_the_title() . '</b><br>';
                         echo '<span class="text-body-tertiary">' . date('F j', strtotime($start_date));
